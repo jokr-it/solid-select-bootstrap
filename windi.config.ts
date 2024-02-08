@@ -78,7 +78,7 @@ export default defineConfig({
     "solid-select-option":
       "px-4 py-2 cursor-default select-none " +
       "hover:(bg-primarySolidSelect)" +
-      "data-disabled:(pointer-events-none text-gray-400) " +
+      "data-disabled:(pointer-events-none text-white) " +
       "mark:(underline text-[unset] bg-[unset])",
     "solid-select-list-placeholder": "px-4 py-2 cursor-default select-none",
   },
