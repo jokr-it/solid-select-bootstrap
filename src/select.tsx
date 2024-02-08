@@ -31,6 +31,7 @@ interface CommonProps {
   loading?: boolean;
   loadingPlaceholder?: string;
   emptyPlaceholder?: string;
+  type?: string;
 }
 
 type SelectReturn = ReturnType<typeof createSelect>;
@@ -161,6 +162,7 @@ const Control: Component<ControlProps> = (props) => {
         name={props.name}
         autofocus={props.autofocus}
         readonly={props.readonly}
+        type={props.type}
       />
     </div>
   );
@@ -196,7 +198,7 @@ const MultiValue: ParentComponent<{ onRemove: () => void }> = (props) => {
   );
 };
 
-type InputProps = Pick<CommonProps, "id" | "name" | "autofocus" | "readonly">;
+type InputProps = Pick<CommonProps, "id" | "name" | "autofocus" | "readonly" | "type">;
 
 const Input: Component<InputProps> = (props) => {
   const select = useSelect();
@@ -207,7 +209,7 @@ const Input: Component<InputProps> = (props) => {
       class="solid-select-input"
       data-multiple={select.multiple}
       data-is-active={select.isActive()}
-      type="text"
+      type={props.type}
       tabIndex={0}
       autocomplete="off"
       autocapitalize="none"
