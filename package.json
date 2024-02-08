@@ -1,18 +1,22 @@
 {
-  "name": "@thisbeyond/solid-select",
-  "version": "0.14.0",
-  "description": "The Select component for Solid.",
-  "info": "A flexible, reactive Select component and core built for use with SolidJS. Supports single or multiple values; static, reactive or dynamic options (including via async fetch); builtin filtering; custom styling and more!",
-  "homepage": "https://solid-select.com",
+  "name": "@jokr-it/solid-select-bootstrap",
+  "version": "0.0.1",
+  "description": "The Select component for Solid. Enhanced with bootstrap classes",
+  "info": "A flexible, reactive Select component and core built for use with SolidJS. Supports single or multiple values; static, reactive or dynamic options (including via async fetch); builtin filtering; bootstrap styling and more!",
   "license": "MIT",
-  "author": "Martin Pengelly-Phillips",
+  "author": "Martin Pengelly-Phillips / Jakob Kannenberg",
   "contributors": [
     {
       "name": "Martin Pengelly-Phillips",
       "email": "dev@thisbeyond.com"
+    },
+    {
+      "name": "Jakob Kannenberg",
+      "email": "j.kannenberg@jokr-it.de"
     }
   ],
   "keywords": [
+    "bootstrap",
     "select",
     "combobox",
     "autocomplete",
@@ -43,7 +47,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thisbeyond/solid-select.git"
+    "url": "git+https://github.com/jokr-it/solid-select-bootstrap"
   },
   "peerDependencies": {
     "solid-js": "^1.5"

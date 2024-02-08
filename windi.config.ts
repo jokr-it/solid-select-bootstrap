@@ -2,6 +2,13 @@ import { defineConfig } from "rollup-plugin-windicss";
 import plugin from "windicss/plugin";
 
 export default defineConfig({
+  theme: {
+    extend: {
+      colors: {
+        primarySolidSelect: "#0d6efd",
+      },
+    },
+  },
   preflight: false,
   plugins: [
     plugin(({ addUtilities }) => {
@@ -70,7 +77,7 @@ export default defineConfig({
       "whitespace-nowrap rounded-sm mt-1 p-2 z-1 overflow-y-auto max-h-50vh",
     "solid-select-option":
       "px-4 py-2 cursor-default select-none " +
-      "hover:bg-gray-200 data-focused:bg-gray-100 " +
+      "hover:(bg-primarySolidSelect)" +
       "data-disabled:(pointer-events-none text-gray-400) " +
       "mark:(underline text-[unset] bg-[unset])",
     "solid-select-list-placeholder": "px-4 py-2 cursor-default select-none",

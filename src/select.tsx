@@ -50,11 +50,11 @@ const Select: Component<SelectProps> = (props) => {
     mergeProps(
       {
         format: ((data, type) => data) as CommonProps["format"],
-        placeholder: "Select...",
+        placeholder: "Auswählen...",
         readonly: typeof props.options !== "function",
         loading: false,
-        loadingPlaceholder: "Loading...",
-        emptyPlaceholder: "No options",
+        loadingPlaceholder: "Laden...",
+        emptyPlaceholder: "Keine Auswahl...",
       },
       props
     ),
@@ -133,7 +133,7 @@ const Control: Component<ControlProps> = (props) => {
 
   return (
     <div
-      class="solid-select-control"
+      class="solid-select-control bg-primary-subtle"
       data-multiple={select.multiple}
       data-has-value={select.hasValue()}
       data-disabled={select.disabled}
@@ -180,11 +180,11 @@ const MultiValue: ParentComponent<{ onRemove: () => void }> = (props) => {
   const select = useSelect();
 
   return (
-    <div class="solid-select-multi-value">
+    <div class="solid-select-multi-value bg-primary">
       {props.children}
       <button
         type="button"
-        class="solid-select-multi-value-remove"
+        class="solid-select-multi-value-remove btn"
         onClick={(event: MouseEvent) => {
           event.stopPropagation();
           props.onRemove();
@@ -244,11 +244,11 @@ const List: Component<ListProps> = (props) => {
 
   return (
     <Show when={select.isOpen()}>
-      <div class="solid-select-list">
+      <div class="solid-select-list list-group">
         <Show
           when={!props.loading}
           fallback={
-            <div class="solid-select-list-placeholder">
+            <div class="solid-select-list-placeholder list-group-item">
               {props.loadingPlaceholder}
             </div>
           }
@@ -256,7 +256,7 @@ const List: Component<ListProps> = (props) => {
           <For
             each={select.options()}
             fallback={
-              <div class="solid-select-list-placeholder">
+              <div class="solid-select-list-placeholder list-group-item">
                 {props.emptyPlaceholder}
               </div>
             }
@@ -290,7 +290,7 @@ const Option: ParentComponent<OptionProps> = (props) => {
       ref={scrollIntoViewOnFocus}
       data-disabled={select.isOptionDisabled(props.option)}
       data-focused={select.isOptionFocused(props.option)}
-      class="solid-select-option"
+      class="solid-select-option list-group-item"
       onClick={() => select.pickOption(props.option)}
     >
       {props.children}

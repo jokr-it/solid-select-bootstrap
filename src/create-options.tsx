@@ -71,7 +71,7 @@ const createOptions = (
         const option = {
           label: (
             <>
-              Create <mark>{getLabel(value)}</mark>
+              <mark>{getLabel(value)}</mark> hinzufügen
             </>
           ),
           value,
