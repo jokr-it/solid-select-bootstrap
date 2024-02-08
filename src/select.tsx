@@ -82,6 +82,7 @@ const Select: Component<SelectProps> = (props) => {
     <SelectContext.Provider value={select}>
       <Container class={local.class}>
         <Control
+          type={local.type}
           id={local.id}
           name={local.name}
           format={local.format}
