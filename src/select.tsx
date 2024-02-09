@@ -152,7 +152,10 @@ const Control: Component<ControlProps> = (props) => {
       <Show when={select.hasValue() && select.multiple}>
         <For each={select.value()}>
           {(value, index) => (
-            <MultiValue onRemove={() => removeValue(index())}>
+            <MultiValue
+              disabled={select.disabled}
+              onRemove={() => removeValue(index())}
+            >
               {props.format(value, "value")}
             </MultiValue>
           )}
@@ -179,27 +182,32 @@ const SingleValue: ParentComponent<{}> = (props) => {
   return <div class="solid-select-single-value">{props.children}</div>;
 };
 
-const MultiValue: ParentComponent<{ onRemove: () => void }> = (props) => {
+const MultiValue: ParentComponent<{ onRemove: () => void, disabled: boolean }> = (props) => {
   const select = useSelect();
 
   return (
     <div class="solid-select-multi-value bg-primary">
       {props.children}
-      <button
-        type="button"
-        class="solid-select-multi-value-remove btn"
-        onClick={(event: MouseEvent) => {
-          event.stopPropagation();
-          props.onRemove();
-        }}
-      >
-        ⨯
-      </button>
+      <Show when={!props.disabled}>
+        <button
+          type="button"
+          class="solid-select-multi-value-remove btn"
+          onClick={(event: MouseEvent) => {
+            event.stopPropagation();
+            props.onRemove();
+          }}
+        >
+          ⨯
+        </button>
+      </Show>
     </div>
   );
 };
 
-type InputProps = Pick<CommonProps, "id" | "name" | "autofocus" | "readonly" | "type">;
+type InputProps = Pick<
+  CommonProps,
+  "id" | "name" | "autofocus" | "readonly" | "type"
+>;
 
 const Input: Component<InputProps> = (props) => {
   const select = useSelect();
