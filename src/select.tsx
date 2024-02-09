@@ -67,6 +67,7 @@ const Select: Component<SelectProps> = (props) => {
       "disabled",
       "onInput",
       "onChange",
+      "unique",
     ]
   );
   const select = createSelect(selectProps);
@@ -182,7 +183,10 @@ const SingleValue: ParentComponent<{}> = (props) => {
   return <div class="solid-select-single-value">{props.children}</div>;
 };
 
-const MultiValue: ParentComponent<{ onRemove: () => void, disabled: boolean }> = (props) => {
+const MultiValue: ParentComponent<{
+  onRemove: () => void;
+  disabled: boolean;
+}> = (props) => {
   const select = useSelect();
 
   return (
@@ -272,9 +276,21 @@ const List: Component<ListProps> = (props) => {
               </div>
             }
           >
-            {(option: OptionType) => (
-              <Option option={option}>{props.format(option, "option")}</Option>
-            )}
+            {(option) => {
+              if (!select.value().includes(option.value) && select.unique) {
+                return (
+                  <Option option={option}>
+                    {props.format(option, "option")}
+                  </Option>
+                );
+              } else if (!select.unique) {
+                return (
+                  <Option option={option}>
+                    {props.format(option, "option")}
+                  </Option>
+                );
+              }
+            }}
           </For>
         </Show>
       </div>

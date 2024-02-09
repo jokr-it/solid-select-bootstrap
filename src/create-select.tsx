@@ -17,6 +17,7 @@ interface CreateSelectProps {
   initialValue?: Value;
   multiple?: boolean;
   disabled?: boolean;
+  unique?: boolean;
   optionToValue?: (option: Option) => SingleValue;
   isOptionDisabled?: (option: Option) => boolean;
   onChange?: (value: Value) => void;
@@ -28,6 +29,7 @@ const createSelect = (props: CreateSelectProps) => {
     {
       multiple: false,
       disabled: false,
+      unique: false,
       optionToValue: (option: Option): SingleValue => option,
       isOptionDisabled: (option: Option) => false,
     },
@@ -95,7 +97,13 @@ const createSelect = (props: CreateSelectProps) => {
 
     const value = config.optionToValue(option);
     if (config.multiple) {
-      setValue([..._value(), value]);
+      if (!config.unique) {
+        setValue([..._value(), value]);
+      } else {
+        if (!_value().includes(value)) {
+          setValue([..._value(), value]);
+        }
+      }
     } else {
       setValue(value);
       setIsActive(false);
@@ -271,6 +279,9 @@ const createSelect = (props: CreateSelectProps) => {
     },
     get disabled() {
       return config.disabled;
+    },
+    get unique() {
+      return config.unique;
     },
     pickOption,
     isOptionFocused,
