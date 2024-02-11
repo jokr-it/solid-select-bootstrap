@@ -16,6 +16,7 @@ interface CreateOptionsConfig {
   filterable?: boolean;
   createable?: boolean | ((inputValue: string) => Value);
   disable?: (value: Value) => boolean;
+  type?: string;
 }
 
 const createOptions = (
