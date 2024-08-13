@@ -55,7 +55,7 @@ export default defineConfig({
     }),
   ],
   shortcuts: {
-    "solid-select-container": "relative data-disabled:(pointer-events-none)",
+    "solid-select-container": "relative",
     "solid-select-control":
       "py-1 px-2 border border-gray-200 rounded leading-normal " +
       "focus-within:(outline-dotted-gray-300) grid grid-cols-1 " +
@@ -69,7 +69,7 @@ export default defineConfig({
     "solid-select-multi-value-remove": "px-1 hover:text-shadow-xl",
     "solid-select-input":
       "col-start-1 row-start-1 flex-1 bg-transparent outline-none m-0 p-0 " +
-      "border-0 text-inherit read-only:cursor-default " +
+      "border-0 text-inherit read-only:cursor-not-allowed " +
       "caret-transparent " +
       "data-multiple:(caret-current) data-is-active:(caret-current)",
     "solid-select-list":
