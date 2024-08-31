@@ -277,7 +277,7 @@ const List: Component<ListProps> = (props) => {
             }
           >
             {(option) => {
-              if (!select.value().includes(option.value) && select.unique) {
+              if (select.unique && !select.value().includes(option.value)) {
                 return (
                   <Option option={option}>
                     {props.format(option, "option")}

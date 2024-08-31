@@ -1,6 +1,6 @@
 {
   "name": "@jokr-it/solid-select-bootstrap",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "The Select component for Solid. Enhanced with bootstrap classes",
   "info": "A flexible, reactive Select component and core built for use with SolidJS. Supports single or multiple values; static, reactive or dynamic options (including via async fetch); builtin filtering; bootstrap styling and more!",
   "license": "MIT",
